@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skip Counting Number Line</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <h1>Skip Counting Number Line</h1>
+      <p class="subtitle">
+        Set start/end values and a skip amount. Press <strong>Play</strong> to watch the line scroll while curved arrows show each jump.
+      </p>
+
+      <form id="controls" class="controls" autocomplete="off">
+        <label>
+          Start
+          <input type="number" id="start" value="0" step="1" />
+        </label>
+        <label>
+          End
+          <input type="number" id="end" value="48" step="1" />
+        </label>
+        <label>
+          Skip By
+          <input type="number" id="step" value="4" step="1" min="1" />
+        </label>
+        <label>
+          Speed (ms)
+          <input type="number" id="speed" value="850" step="50" min="150" />
+        </label>
+        <div class="actions">
+          <button type="submit">Play</button>
+          <button type="button" id="pause">Pause</button>
+          <button type="button" id="reset">Reset</button>
+        </div>
+      </form>
+
+      <section class="status-panel">
+        <p id="status">Ready.</p>
+      </section>
+
+      <section id="viewport" class="viewport" aria-label="Animated number line">
+        <div id="track" class="track"></div>
+        <svg id="arrowLayer" class="arrow-layer" aria-hidden="true"></svg>
+      </section>
+    </main>
+
+    <script src="script.js"></script>
+  </body>
+</html>

@@ -128,13 +128,10 @@ function addArrow(fromValue, toValue, stepNumber) {
   walker.height = WALKER_HEIGHT;
 
   const direction = toXValue >= fromX ? 1 : -1;
-  const tangentX = toXValue - center;
-  const tangentY = arcHeight;
-  const angle = Math.atan2(tangentY, tangentX * direction) * (180 / Math.PI);
   const facing = direction > 0 ? "" : " scaleX(-1)";
   walker.style.left = `${toXValue}px`;
   walker.style.top = `${y}px`;
-  walker.style.transform = `translate(-50%, -72%) rotate(${angle}deg)${facing}`;
+  walker.style.transform = `translate(-50%, -72%)${facing}`;
   track.appendChild(walker);
 }
 

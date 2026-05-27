@@ -1,5 +1,8 @@
 const PIXELS_PER_UNIT = 56;
 const VISIBLE_MARGIN = 180;
+const WALKER_IMAGES = ["Skip Walking 1.png", "Skip Walking 2.png"];
+const WALKER_WIDTH = 113;
+const WALKER_HEIGHT = 113;
 
 const form = document.getElementById("controls");
 const startInput = document.getElementById("start");
@@ -103,7 +106,7 @@ function highlightValue(value) {
   }
 }
 
-function addArrow(fromValue, toValue) {
+function addArrow(fromValue, toValue, stepNumber) {
   const fromX = toX(fromValue);
   const toXValue = toX(toValue);
   const center = (fromX + toXValue) / 2;
@@ -115,6 +118,21 @@ function addArrow(fromValue, toValue) {
   path.setAttribute("class", "skip-arrow");
   path.setAttribute("d", `M ${fromX} ${y} Q ${center} ${y - arcHeight} ${toXValue} ${y}`);
   arrowLayer.appendChild(path);
+
+  const walker = document.createElement("img");
+  walker.className = "walker";
+  walker.src = WALKER_IMAGES[(stepNumber - 1) % WALKER_IMAGES.length];
+  walker.alt = "";
+  walker.setAttribute("aria-hidden", "true");
+  walker.width = WALKER_WIDTH;
+  walker.height = WALKER_HEIGHT;
+
+  const direction = toXValue >= fromX ? 1 : -1;
+  const facing = direction > 0 ? "" : " scaleX(-1)";
+  walker.style.left = `${toXValue}px`;
+  walker.style.top = `${y}px`;
+  walker.style.transform = `translate(-50%, -72%)${facing}`;
+  track.appendChild(walker);
 }
 
 function centerOn(value) {
@@ -135,7 +153,7 @@ function tick() {
   centerOn(currentValue);
 
   if (currentIndex > 0) {
-    addArrow(sequence[currentIndex - 1], currentValue);
+    addArrow(sequence[currentIndex - 1], currentValue, currentIndex);
   }
 
   statusEl.textContent = `Counting by ${config.step}: now on ${currentValue}`;

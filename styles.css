@@ -153,10 +153,18 @@ button#reset {
   stroke-width: 4;
   stroke-linecap: round;
   stroke-linejoin: round;
-  marker-end: url(#arrowhead);
   opacity: 0.9;
   stroke-dasharray: 10 8;
   animation: draw 0.45s ease;
+}
+
+.walker {
+  position: absolute;
+  width: 113px;
+  height: 113px;
+  object-fit: contain;
+  pointer-events: none;
+  transform-origin: 50% 80%;
 }
 
 @keyframes draw {

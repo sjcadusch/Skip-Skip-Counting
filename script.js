@@ -1,8 +1,8 @@
 const PIXELS_PER_UNIT = 56;
 const VISIBLE_MARGIN = 180;
 const WALKER_IMAGES = ["Skip Walking 1.png", "Skip Walking 2.png"];
-const WALKER_WIDTH = 50;
-const WALKER_HEIGHT = 50;
+const WALKER_WIDTH = 75;
+const WALKER_HEIGHT = 75;
 
 const form = document.getElementById("controls");
 const startInput = document.getElementById("start");

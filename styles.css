@@ -160,8 +160,8 @@ button#reset {
 
 .walker {
   position: absolute;
-  width: 75px;
-  height: 75px;
+  width: 113px;
+  height: 113px;
   object-fit: contain;
   pointer-events: none;
   transform-origin: 50% 80%;
